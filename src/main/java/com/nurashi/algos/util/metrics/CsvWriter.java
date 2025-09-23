@@ -1,4 +1,4 @@
-package com.nurashi.algos.util;
+package com.nurashi.algos.util.metrics;
 
 import java.io.FileWriter;
 import java.io.IOException;

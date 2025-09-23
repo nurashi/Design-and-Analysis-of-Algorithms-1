@@ -2,7 +2,7 @@ package com.nurashi.algos.sort;
 
 import org.junit.jupiter.api.Test;
 
-import com.nurashi.algos.util.Metrics;
+import com.nurashi.algos.util.metrics.Metrics;
 
 import java.util.Arrays;
 import java.util.Random;

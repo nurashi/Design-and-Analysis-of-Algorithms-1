@@ -1,4 +1,4 @@
-package com.nurashi.algos.util;
+package com.nurashi.algos.util.metrics;
 
 public class Metrics {
 
