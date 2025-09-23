@@ -1,57 +1,53 @@
 package com.nurashi.algos.sort;
 
-import com.nurashi.algos.util.Metrics;
-
 import java.util.Random;
+
+import com.nurashi.algos.util.array.ArrayUtils;
+import com.nurashi.algos.util.metrics.Metrics;
+
 
 public class QuickSort {
 
     private static final Random RAND = new Random();
 
     public static void sort(int[] arr, Metrics metrics) {
+        ArrayUtils.requireNonEmpty(arr);
         quickSort(arr, 0, arr.length - 1, metrics);
     }
 
-    private static void quickSort(int[] arr, int start, int end, Metrics metrics) {
-        while (start < end) {
-            // choose randomized pivot
-            int pivotIndex = start + RAND.nextInt(end - start + 1);
-            swap(arr, pivotIndex, end, metrics);
+    private static void quickSort(int[] arr, int low, int high, Metrics metrics) {
+        while (low < high) {
+            int pivotIndex = low + RAND.nextInt(high - low + 1);
+            ArrayUtils.swap(arr, pivotIndex, high);
+            metrics.incAllocations();
 
-            int p = partition(arr, start, end, metrics);
+            int p = partition(arr, low, high, metrics);
 
-            // recurse into smaller side first (bounded stack)
-            if (p - start < end - p) {
-                quickSort(arr, start, p - 1, metrics);
-                start = p + 1; // iterate into larger half
+            if (p - low < high - p) {
+                quickSort(arr, low, p - 1, metrics);
+                low = p + 1;
             } else {
-                quickSort(arr, p + 1, end, metrics);
-                end = p - 1; // iterate into larger half
+                quickSort(arr, p + 1, high, metrics);
+                high = p - 1;
             }
         }
     }
 
-    private static int partition(int[] arr, int start, int end, Metrics metrics) {
-        int pivot = arr[end];
-        int i = start - 1;
+    private static int partition(int[] arr, int low, int high, Metrics metrics) {
+        int pivot = arr[high];
+        int i = low - 1;
 
-        for (int j = start; j < end; j++) {
+        for (int j = low; j < high; j++) {
             metrics.incComparisons();
             if (arr[j] <= pivot) {
                 i++;
-                swap(arr, i, j, metrics);
+                ArrayUtils.swap(arr, i, j);
+                metrics.incAllocations();
             }
         }
-        swap(arr, i + 1, end, metrics);
-        return i + 1;
-    }
+        ArrayUtils.swap(arr, i + 1, high);
+        metrics.incAllocations();
 
-    private static void swap(int[] arr, int i, int j, Metrics metrics) {
-        if (i != j) {
-            int tmp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = tmp;
-            metrics.incAllocations(); 
-        }
+        return i + 1;
     }
 }

@@ -1,6 +1,6 @@
 package com.nurashi.algos.sort;
 
-import com.nurashi.algos.util.Metrics;
+import com.nurashi.algos.util.metrics.Metrics;
 
 
 public class MergeSort { 

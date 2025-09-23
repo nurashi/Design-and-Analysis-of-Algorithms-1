@@ -2,6 +2,9 @@ package com.nurashi.algos.util;
 
 import org.junit.jupiter.api.Test;
 
+import com.nurashi.algos.util.metrics.Metrics;
+import com.nurashi.algos.util.metrics.MetricsTracker;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MetricsTrackerTest {
