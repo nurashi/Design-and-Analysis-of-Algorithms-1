@@ -1,7 +1,13 @@
 package com.nurashi.algos;
 
+import com.nurashi.algos.cli.Runner;
+
 public class App {
-    public static int add(int a, int b) {
-        return a + b;
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.err.println("Usage: <algorithm> <n> [k]");
+            System.exit(1);
+        }
+        Runner.run(args);
     }
 }
