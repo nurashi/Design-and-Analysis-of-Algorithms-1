@@ -2,28 +2,6 @@
 
 A comprehensive Java implementation of fundamental divide-and-conquer algorithms with performance analysis and benchmarking capabilities.
 
-## 📋 Table of Contents
-
-- [Design and Analysis of Algorithms](#design-and-analysis-of-algorithms)
-  - [📋 Table of Contents](#-table-of-contents)
-  - [Overview](#overview)
-  - [Algorithms Implemented](#algorithms-implemented)
-    - [Sorting Algorithms](#sorting-algorithms)
-    - [Selection Algorithm](#selection-algorithm)
-    - [Computational Geometry](#computational-geometry)
-  - [Features](#features)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Command Line Interface](#command-line-interface)
-    - [Output Format](#output-format)
-    - [Custom Performance Analysis](#custom-performance-analysis)
-  - [Testing](#testing)
-  - [📁 Project Structure](#-project-structure)
-  - [Performance Metrics](#performance-metrics)
-    - [Algorithm Complexity](#algorithm-complexity)
-    - [Tracked Metrics](#tracked-metrics)
-
 ## Overview
 
 This project implements and analyzes several key divide-and-conquer algorithms, providing both educational insight and practical performance measurements. Each algorithm is instrumented with detailed metrics tracking including comparisons, memory allocations, and recursion depth.
@@ -151,40 +129,6 @@ Test coverage includes:
 - Edge case handling
 - Performance metric accuracy
 - Utility function validation
-
-## 📁 Project Structure
-
-```
-src/
-├── main/java/com/nurashi/algos/
-│   ├── App.java                    # Main application entry point
-│   ├── bench/                      # JMH benchmark implementations
-│   │   └── SelectBench.java
-│   ├── cli/                        # Command-line interface
-│   │   └── Runner.java
-│   ├── closest/                    # Closest pair algorithm
-│   │   ├── ClosestPair.java
-│   │   └── Point.java
-│   ├── select/                     # Selection algorithm
-│   │   └── DeterministicSelect.java
-│   ├── sort/                       # Sorting algorithms
-│   │   ├── MergeSort.java
-│   │   └── QuickSort.java
-│   └── util/                       # Utility classes
-│       ├── array/ArrayUtils.java   # Array manipulation utilities
-│       └── metrics/                # Performance tracking
-│           ├── Metrics.java
-│           ├── MetricsTracker.java
-│           └── CsvWriter.java
-└── test/java/                      # Comprehensive test suite
-    └── com/nurashi/algos/
-        ├── closest/ClosestPairTest.java
-        ├── select/DeterministicSelectTest.java
-        ├── sort/
-        │   ├── MergeSortTest.java
-        │   └── QuickSortTest.java
-        └── util/                   # Utility tests
-```
 
 ## Performance Metrics
 
