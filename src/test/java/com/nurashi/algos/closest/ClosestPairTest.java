@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Random;
+import com.nurashi.algos.util.metrics.Metrics;
 
 class ClosestPairTest {
 
@@ -20,7 +21,8 @@ class ClosestPairTest {
     @Test
     void testSimpleCase() {
         Point[] pts = { new Point(0, 0), new Point(3, 4), new Point(7, 1) };
-        assertEquals(5.0, ClosestPair.findClosest(pts), 1e-9);
+        Metrics metrics = new Metrics();
+        assertEquals(5.0, ClosestPair.findClosest(pts, metrics), 1e-9);
     }
 
     @Test
@@ -31,7 +33,8 @@ class ClosestPairTest {
             pts[i] = new Point(rand.nextInt(100), rand.nextInt(100));
         }
         double expected = bruteForce(pts);
-        double actual = ClosestPair.findClosest(pts);
+        Metrics metrics = new Metrics();
+        double actual = ClosestPair.findClosest(pts, metrics);
         assertEquals(expected, actual, 1e-9);
     }
 
@@ -43,7 +46,8 @@ class ClosestPairTest {
             pts[i] = new Point(rand.nextDouble() * 1000, rand.nextDouble() * 1000);
         }
         double expected = bruteForce(pts);
-        double actual = ClosestPair.findClosest(pts);
+        Metrics metrics = new Metrics();
+        double actual = ClosestPair.findClosest(pts, metrics);
         assertEquals(expected, actual, 1e-9);
     }
 }
