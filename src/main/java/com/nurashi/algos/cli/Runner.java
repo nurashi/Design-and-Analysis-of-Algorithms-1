@@ -11,6 +11,10 @@ import java.util.Random;
 
 public class Runner {
 
+    public static void printHeader() {
+        System.out.println("algorithmName;runTime;counter;depth;allocation");
+    }
+
     public static void run(String[] args) {
         String algo = args[0].toLowerCase();
         int n = Integer.parseInt(args[1]);
@@ -20,7 +24,6 @@ public class Runner {
         Metrics metrics = new Metrics();
 
         long start, end;
-        Object result = null;
 
         switch (algo) {
             case "mergesort" -> {
@@ -28,19 +31,17 @@ public class Runner {
                 start = System.nanoTime();
                 MergeSort.sort(arr, metrics);
                 end = System.nanoTime();
-                result = arr[0];
             }
             case "quicksort" -> {
                 int[] arr = rand.ints(n, 0, 1_000_000).toArray();
                 start = System.nanoTime();
                 QuickSort.sort(arr, metrics);
                 end = System.nanoTime();
-                result = arr[0];
             }
             case "select" -> {
                 int[] arr = rand.ints(n, 0, 1_000_000).toArray();
                 start = System.nanoTime();
-                result = DeterministicSelect.select(arr, k);
+                DeterministicSelect.select(arr, k, metrics);
                 end = System.nanoTime();
             }
             case "closest" -> {
@@ -49,7 +50,7 @@ public class Runner {
                     pts[i] = new Point(rand.nextDouble() * 1000, rand.nextDouble() * 1000);
                 }
                 start = System.nanoTime();
-                result = ClosestPair.findClosest(pts);
+                ClosestPair.findClosest(pts, metrics);
                 end = System.nanoTime();
             }
             default -> throw new IllegalArgumentException("Unknown algorithm: " + algo);
@@ -57,10 +58,11 @@ public class Runner {
 
         long durationMs = (end - start) / 1_000_000;
 
-        System.out.printf("Algo=%s, n=%d, result=%s, time=%dms%n",
-                algo, n, result, durationMs);
-
-        System.out.printf("Metrics - Comparisons: %d, Allocations: %d, Max Recursion Depth: %d%n",
-                metrics.getComparisons(), metrics.getAllocations(), metrics.getMaxRecursionDepth());
+        System.out.printf("%s;%d;%d;%d;%d%n",
+                algo, 
+                durationMs, 
+                metrics.getComparisons(), 
+                metrics.getMaxRecursionDepth(), 
+                metrics.getAllocations());
     }
 }

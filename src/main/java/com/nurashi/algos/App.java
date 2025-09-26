@@ -8,6 +8,7 @@ public class App {
             System.err.println("Usage: <algorithm> <n> [k]");
             System.exit(1);
         }
+        Runner.printHeader();
         Runner.run(args);
     }
 }
