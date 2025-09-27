@@ -121,8 +121,9 @@ Run the comprehensive test suite:
 # Run all tests
 mvn test
 
-![alt text](image.png)
 ```
+<img width="1280" height="801" alt="image" src="https://github.com/user-attachments/assets/0dc2ab77-7c61-4de3-940c-8dad3e169191" />
+
 
 Test coverage includes:
 - Algorithm correctness verification
